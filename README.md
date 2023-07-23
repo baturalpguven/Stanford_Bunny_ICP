@@ -14,13 +14,13 @@ The objective function to minimize is given by:
 $$E = \sum_i \left(\mathbf{n_i} \cdot \left(\mathbf{R_\theta} \mathbf{p_i} + \mathbf{t} - \mathbf{q_j}\right)\right)^2 \rightarrow \mathrm{min},$$
 
 where:
-- $$(\mathbf{n_i})$$ is the normal vector of the $$i-th$$ point in the source point cloud.
-- $$(\mathbf{R_\theta})$$ is the 2D rotation matrix with angle $$(\theta)$$.
-- $$(\mathbf{p_i})$$ is the $$i-th$$ point in the source point cloud.
-- $$(\mathbf{t})$$ is the translation vector.
-- $$(\mathbf{q_j})$$ is the $$j-th$$ point in the target point cloud.
+- $(\mathbf{n_i})$ is the normal vector of the $$i-th$$ point in the source point cloud.
+- $(\mathbf{R_\theta})$ is the 2D rotation matrix with angle $(\theta)$.
+- $(\mathbf{p_i})$ is the $i-th$ point in the source point cloud.
+- $(\mathbf{t})$ is the translation vector.
+- $(\mathbf{q_j})$ is the $j-th$ point in the target point cloud.
 
-The derivative of $$\(E\)$$ with respect to $$\(\theta\)$$ is given by:
+The derivative of $\(E\)$ with respect to $\(\theta\)$ is given by:
 
 $$\displaystyle \frac{\partial E}{\partial \theta} = \left[\begin{matrix}n_{x} & n_{y} & n_{x} \left(- p_{x} \sin{\theta} - p_{y} \cos{\theta}\right) + n_{y} \left(p_{x} \cos{\theta} - p_{y} \sin{\theta}\right)\end{matrix}\right].$$
 
