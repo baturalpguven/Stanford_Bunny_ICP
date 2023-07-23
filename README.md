@@ -7,20 +7,22 @@ In this repository, the point2plane ICP algorithm is applied to Stanford Bunny a
 
 First, let’s start with the implementation of PCA, this method is one of the most common feature reduction methods that preserve the variance of the dataset by choosing the most relevant features via assessing their eigenvectors as much as possible. Due to this reason, it was an important tool to use in our work. The mathematical model of PCA can be summarized as 
 
+
+
 The objective function to minimize is given by:
 
-$$E = \sum_i \left(\mathbf{n_i} \cdot \left(\mathbf{R_\theta} \mathbf{p_i} + \mathbf{t} - \mathbf{q_j}\right)\right)^2 \rightarrow \mathrm{min},$$
+\[ E = \sum_i \left(\vec{n_i} \cdot \left(\mathbf{R_\theta} \vec{p_i} + \vec{t} - \vec{q_j}\right)\right)^2 \rightarrow \mathrm{min}, \]
 
 where:
-- \(\mathbf{n_i}\) is the normal vector of the i-th point in the source point cloud.
+- \(\vec{n_i}\) is the normal vector of the i-th point in the source point cloud.
 - \(\mathbf{R_\theta}\) is the 2D rotation matrix with angle \(\theta\).
-- \(\mathbf{p_i}\) is the i-th point in the source point cloud.
-- \(\mathbf{t}\) is the translation vector.
-- \(\mathbf{q_j}\) is the j-th point in the target point cloud.
+- \(\vec{p_i}\) is the i-th point in the source point cloud.
+- \(\vec{t}\) is the translation vector.
+- \(\vec{q_j}\) is the j-th point in the target point cloud.
 
 The derivative of \(E\) with respect to \(\theta\) is given by:
 
-$$\displaystyle \frac{\partial E}{\partial \theta} = \left[\begin{matrix}n_{x} & n_{y} & n_{x} \left(- p_{x} \sin{\theta} - p_{y} \cos{\theta}\right) + n_{y} \left(p_{x} \cos{\theta} - p_{y} \sin{\theta}\right)\end{matrix}\right].$$
+\[ \frac{\partial E}{\partial \theta} = \begin{bmatrix} n_{x} & n_{y} & n_{x} \left(- p_{x} \sin{\theta} - p_{y} \cos{\theta}\right) + n_{y} \left(p_{x} \cos{\theta} - p_{y} \sin{\theta}\right) \end{bmatrix}. \]
 
 
 
