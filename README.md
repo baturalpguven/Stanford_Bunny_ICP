@@ -1,35 +1,39 @@
 # <a href="http://graphics.stanford.edu/data/3Dscanrep/"> Stanford Bunny </a> ICP
-In this repository, the point2plane ICP algorithm is applied to Stanford Bunny and visualized with matplotlib.
+
+In this repository, the Least Squares Iterative Closest Point (ICP) algorithm with the point-to-plane metric applied to the Stanford Bunny model and outlier data eliminated for more robust allignment. The Stanford Bunny is a ceramic figurine widely used in 3D modeling tasks within computer graphics and vision research. It has been scanned using either the Cyberware 3030 MS scanner or the Stanford Large Statue Scanner, employing laser triangulation to capture spatial coordinates on its surface [3].
+
+For visual comparisons,  both aligned and non-aligned images of the Stanford Bunny are in the "Results" section.
+
+For more comprehensive information on how the measurements were acquired and processed, you can explore the <a href="http://graphics.stanford.edu/data/3Dscanrep/">Stanford Bunny Model</a>.
 
 
 
-## ICP
+## Point-to-Plane ICP
 
-First, let’s start with the implementation of PCA, this method is one of the most common feature reduction methods that preserve the variance of the dataset by choosing the most relevant features via assessing their eigenvectors as much as possible. Due to this reason, it was an important tool to use in our work. The mathematical model of PCA can be summarized as 
+The Point-to-Plane Iterative Closest Point (ICP) algorithm aims to find an optimal transformation (rotation $R$ and translation $t$) that aligns two 3D point clouds, $P={p_i}$ and $Q={q_i}$. The objective is to minimize the sum of squared distances between corresponding points in the two clouds, with the addition of a threshold to exclude distant points during the ICP algorithm.
 
+Previously, the Point-to-Point metric was used for ICP, but it showed slower convergence, requiring more iterations for a satisfactory solution. To improve this, the *Point-to-Plane* metric was introduced. In this metric, the closest point is still determined, but the error is projected onto the normal direction from the found point, providing a more effective measure for sampled points.
 
-
-The objective function to minimize is given by:
+The objective function to minimize in Point-to-Plane ICP is given by:
 
 $$E = \sum_i \left(\mathbf{n_i} \cdot \left(\mathbf{R_\theta} \mathbf{p_i} + \mathbf{t} - \mathbf{q_j}\right)\right)^2 \rightarrow \mathrm{min},$$
 
 where:
-- $(\mathbf{n_i})$ is the normal vector of the $i-th$ point in the source point cloud.
-- $(\mathbf{R_\theta})$ is the 2D rotation matrix with angle $(\theta)$.
-- $(\mathbf{p_i})$ is the $i-th$ point in the source point cloud.
-- $(\mathbf{t})$ is the translation vector.
-- $(\mathbf{q_j})$ is the $j-th$ point in the target point cloud.
 
-The derivative of $\(E\)$ with respect to $\(\theta\)$ is given by:
+$(\mathbf{n_i})$ represents the normal vector of the $i$-th point in the source point cloud.
+$(\mathbf{R_\theta})$ is the 2D rotation matrix with angle $(\theta)$.
+$(\mathbf{p_i})$ corresponds to the $i$-th point in the source point cloud.
+$(\mathbf{t})$ denotes the translation vector.
+$(\mathbf{q_j})$ refers to the $j$-th point in the target point cloud.
 
-$$\displaystyle \frac{\partial E}{\partial \theta} = \left[\begin{matrix}n_{x} & n_{y} & n_{x} \left(- p_{x} \sin{\theta} - p_{y} \cos{\theta}\right) + n_{y} \left(p_{x} \cos{\theta} - p_{y} \sin{\theta}\right)\end{matrix}\right].$$
-
+To efficiently solve the above minimization problem, the <a href="https://github.com/ReillyBova/Point-Cloud-Registration/tree/master">Point-Cloud-Registration</a> repository utilizes the kdTree algorithm, which significantly improves the convergence rate. This approach is also applied in the current implementation.
 
 
 
 
 ## Results
 
+ICP is applied successfully, and unaligned measurements in the *before ICP* figure  meshed into a simple correct bunny which can be seen in the *After ICP* figure.
 
 <table>
   <tr>
@@ -61,13 +65,13 @@ python3 icp.py ./bunny/top3.pts ./bunny/bun000.pts
 
 ```
 
-To generate the bunny image after ICP run following
+To generate the bunny image after ICP alignment run following
 
 ```
 python3 view_pts_3D_matplotlib.py -- mode output
 ```
 
-To generate the bunny image after ICP run following
+To generate the bunny image after ICP alignment run following
 ```
 python3 view_pts_3D_matplotlib.py -- mode bunny
 ```
@@ -90,7 +94,7 @@ Feel free to modify the example command and arguments to match the specific comm
 1. <a href="https://github.com/ReillyBova/Point-Cloud-Registration/tree/master"> Point-Cloud-Registration </a>
 2. <a href="https://www.youtube.com/watch?v=QWDM4cFdKrE"> Iterative Closest Point (ICP) - 5 Minutes with Cyrill </a>
 3. <a href="https://nbviewer.org/github/niosus/notebooks/blob/master/icp.ipynb"> Jupyter/nbviewer/ICP </a>
-
+4. <a href="http://graphics.stanford.edu/data/3Dscanrep/">Stanford Bunny Model</a>
 
 
 
