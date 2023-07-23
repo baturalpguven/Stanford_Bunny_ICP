@@ -1,6 +1,7 @@
 # <a href="http://graphics.stanford.edu/data/3Dscanrep/"> Stanford Bunny </a> ICP
 
-In this repository, the Least Squares Iterative Closest Point (ICP) algorithm with the point-to-plane metric applied to the Stanford Bunny model and outlier data eliminated for more robust allignment. The Stanford Bunny is a ceramic figurine widely used in 3D modeling tasks within computer graphics and vision research. It has been scanned using either the Cyberware 3030 MS scanner or the Stanford Large Statue Scanner, employing laser triangulation to capture spatial coordinates on its surface [3].
+In this repository, the Least Squares Iterative Closest Point (ICP) algorithm with the point-to-plane metric applied to the Stanford Bunny model and outlier data eliminated for more robust allignment. <a href="https://github.com/ReillyBova/Point-Cloud-Registration/tree/master">Point-Cloud-Registration</a> repository mainly used during the implementation process. 
+The Stanford Bunny is a ceramic figurine widely used in 3D modeling tasks within computer graphics and vision research. It has been scanned using either the Cyberware 3030 MS scanner or the Stanford Large Statue Scanner, employing laser triangulation to capture spatial coordinates on its surface [3].
 
 For visual comparisons,  both aligned and non-aligned images of the Stanford Bunny are in the "Results" section.
 
@@ -71,7 +72,7 @@ To generate the bunny image after ICP alignment run following
 python3 view_pts_3D_matplotlib.py -- mode output
 ```
 
-To generate the bunny image after ICP alignment run following
+To generate the bunny image before ICP alignment run following
 ```
 python3 view_pts_3D_matplotlib.py -- mode bunny
 ```
