@@ -35,16 +35,18 @@ $$\displaystyle \frac{\partial E}{\partial \theta} = \left[\begin{matrix}n_{x} &
   <tr>
     <td align="center">
       <img src="https://github.com/baturalpguven/Stanford_Bunny_ICP/assets/77858949/aa91c3cf-4a26-4d56-90f9-526bd6351844" alt="Before" >
+      <p>Before ICP</p>
     </td>
     <td align="center">
       <img src=https://github.com/baturalpguven/Stanford_Bunny_ICP/assets/77858949/2a69f220-448b-4bff-b03d-23a137a9df61" alt="After" >
+      <p>After ICP</p>
     </td>
   </tr>
 </table>
 
 
 ## Running the Code
-To run the code simply run the following in the command line for training.
+To apply ICP to <a href="http://graphics.stanford.edu/data/3Dscanrep/"> Stanford Bunny </a> use following commands
 
 ```
 python3 icp.py ./bunny/bun045.pts ./bunny/bun000.pts
