@@ -6,9 +6,22 @@ In this repository, the point2plane ICP algorithm is applied to Stanford Bunny a
 ## ICP
 
 First, let’s start with the implementation of PCA, this method is one of the most common feature reduction methods that preserve the variance of the dataset by choosing the most relevant features via assessing their eigenvectors as much as possible. Due to this reason, it was an important tool to use in our work. The mathematical model of PCA can be summarized as 
-$$E = \Sigma_i (n_i \dot X^T X$$
-$$E = \sum_i (\n_i \cdot (\R_\theta \p_i + \t - \q_j))^2 \rightarrow \mathrm{min},$$
-$$\displaystyle \left[\begin{matrix}n_{x} & n_{y} & n_{x} \left(- p_{x} \sin{\left(\theta \right)} - p_{y} \cos{\left(\theta \right)}\right) + n_{y} \left(p_{x} \cos{\left(\theta \right)} - p_{y} \sin{\left(\theta \right)}\right)\end{matrix}\right]$$
+
+The objective function to minimize is given by:
+
+$$E = \sum_i \left(\mathbf{n_i} \cdot \left(\mathbf{R_\theta} \mathbf{p_i} + \mathbf{t} - \mathbf{q_j}\right)\right)^2 \rightarrow \mathrm{min},$$
+
+where:
+- \(\mathbf{n_i}\) is the normal vector of the i-th point in the source point cloud.
+- \(\mathbf{R_\theta}\) is the 2D rotation matrix with angle \(\theta\).
+- \(\mathbf{p_i}\) is the i-th point in the source point cloud.
+- \(\mathbf{t}\) is the translation vector.
+- \(\mathbf{q_j}\) is the j-th point in the target point cloud.
+
+The derivative of \(E\) with respect to \(\theta\) is given by:
+
+$$\displaystyle \frac{\partial E}{\partial \theta} = \left[\begin{matrix}n_{x} & n_{y} & n_{x} \left(- p_{x} \sin{\theta} - p_{y} \cos{\theta}\right) + n_{y} \left(p_{x} \cos{\theta} - p_{y} \sin{\theta}\right)\end{matrix}\right].$$
+
 
 
 
