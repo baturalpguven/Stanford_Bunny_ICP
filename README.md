@@ -14,7 +14,7 @@ The objective function to minimize is given by:
 $$E = \sum_i \left(\mathbf{n_i} \cdot \left(\mathbf{R_\theta} \mathbf{p_i} + \mathbf{t} - \mathbf{q_j}\right)\right)^2 \rightarrow \mathrm{min},$$
 
 where:
-- $(\mathbf{n_i})$ is the normal vector of the $$i-th$$ point in the source point cloud.
+- $(\mathbf{n_i})$ is the normal vector of the $i-th$ point in the source point cloud.
 - $(\mathbf{R_\theta})$ is the 2D rotation matrix with angle $(\theta)$.
 - $(\mathbf{p_i})$ is the $i-th$ point in the source point cloud.
 - $(\mathbf{t})$ is the translation vector.
