@@ -69,12 +69,12 @@ python3 icp.py ./bunny/top3.pts ./bunny/bun000.pts
 To generate the bunny image after ICP alignment run following
 
 ```
-python3 view_pts_3D_matplotlib.py -- mode output
+python3 view_pts_3D_matplotlib.py --mode output
 ```
 
 To generate the bunny image before ICP alignment run following
 ```
-python3 view_pts_3D_matplotlib.py -- mode bunny
+python3 view_pts_3D_matplotlib.py --mode bunny
 ```
 
 
