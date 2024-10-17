@@ -43,7 +43,7 @@ ICP is applied successfully, and unaligned measurements in the *before ICP* figu
       <p>Before ICP</p>
     </td>
     <td align="center">
-      <img src=https://github.com/baturalpguven/Stanford_Bunny_ICP/assets/77858949/2a69f220-448b-4bff-b03d-23a137a9df61" alt="After" >
+      <img src="https://github.com/baturalpguven/Stanford_Bunny_ICP/assets/77858949/2a69f220-448b-4bff-b03d-23a137a9df61" alt="After" >
       <p>After ICP</p>
     </td>
   </tr>
